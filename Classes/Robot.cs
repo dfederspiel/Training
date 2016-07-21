@@ -19,23 +19,23 @@ namespace Classes
         public DateTime Decomissioned { get; set; }
         public string Breed { get; set; }
 
-        string[] sounds = { "Blip", "Bleep", "Bloop", "Beep" };
-        string type = "Robot";
+        public string[] Sounds = { "Blip", "Bleep", "Bloop", "Beep" };
+        public string Type = "Robot";
 
         public Robot()
         {
             synth = new SpeechSynthesizer();
-            synth.Speak("I am alive.");
+            synth.Speak("I have been constructed.");
         }
 
-        public void MakeIntroduction()
+        public virtual void MakeIntroduction()
         {
-            synth.Speak("I am a " + type);
+            synth.Speak("Hello, I am a " + Type);
         }
 
         public void Speak()
         {
-            synth.Speak(sounds[rnd.Next(sounds.Count())]);
+            synth.Speak(Sounds[rnd.Next(Sounds.Count())]);
         }
 
         public void Speak(string words)
@@ -48,7 +48,7 @@ namespace Classes
             string whatToSay = "";
             for(var x = 0; x < numberOfWords; x++)
             {
-                whatToSay += " " + sounds[rnd.Next(sounds.Count())];
+                whatToSay += " " + Sounds[rnd.Next(Sounds.Count())];
             }
             synth.Speak(whatToSay);
         }

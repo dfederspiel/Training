@@ -12,19 +12,19 @@ namespace Classes.Console
         bool done = false;
         static void Main(string[] args)
         {
-            Robot p = new Robot();
-            p.MakeIntroduction();
-
+            Robot robot = new Robot();
             bool running = true;
+
             while (running)
             {
-                p.Speak("What would you like me to say?");
+                robot.Speak();
+                robot.Speak("What would you like me to say?");
                 var request = System.Console.ReadLine();
                 if (request == "Die") running = false;
-                else p.Speak(request);
+                else robot.Speak(request);
             }
-            p.Speak(10);
-            p.Die();
+            robot.Speak(10);
+            robot.Die();
         }
     }
 }
