@@ -7,26 +7,50 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Pet
+    public class Robot
     {
         SpeechSynthesizer synth;
         static Random rnd = new Random();
+
         public string Name { get; set; }
         public int Age { get; set; }
         public float Weight { get; set; }
-        public DateTime Born { get; set; }
+        public DateTime BuildDate { get; set; }
+        public DateTime Decomissioned { get; set; }
         public string Breed { get; set; }
 
-        string[] sounds = { "One", "Cat", "Works", "Food", "Beep" };
+        string[] sounds = { "Blip", "Bleep", "Bloop", "Beep" };
+        string type = "Robot";
 
-        public Pet()
+        public Robot()
         {
             synth = new SpeechSynthesizer();
             synth.Speak("I am alive.");
         }
+
+        public void MakeIntroduction()
+        {
+            synth.Speak("I am a " + type);
+        }
+
         public void Speak()
         {
             synth.Speak(sounds[rnd.Next(sounds.Count())]);
+        }
+
+        public void Speak(string words)
+        {
+            synth.Speak(words);
+        }
+
+        public void Speak(int numberOfWords)
+        {
+            string whatToSay = "";
+            for(var x = 0; x < numberOfWords; x++)
+            {
+                whatToSay += " " + sounds[rnd.Next(sounds.Count())];
+            }
+            synth.Speak(whatToSay);
         }
 
         public void Eat(float amount)

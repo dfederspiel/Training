@@ -9,17 +9,21 @@ namespace Classes.Console
 {
     class Program
     {
+        bool done = false;
         static void Main(string[] args)
         {
-            
+            Robot p = new Robot();
+            p.MakeIntroduction();
 
-            Pet p = new Pet();
-            var i = 0;
-            while(i < 5)
+            bool running = true;
+            while (running)
             {
-                p.Speak();
-                i++;
+                p.Speak("What would you like me to say?");
+                var request = System.Console.ReadLine();
+                if (request == "Die") running = false;
+                else p.Speak(request);
             }
+            p.Speak(10);
             p.Die();
         }
     }
